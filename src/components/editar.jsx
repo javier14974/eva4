@@ -1,9 +1,0 @@
-const editar = () =>{
-
-}
-
-
-export {
-    editar,
-    
-} 

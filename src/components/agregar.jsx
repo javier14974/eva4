@@ -16,51 +16,54 @@ const Agregar = ({ onAgregar }) => {
         let vali = true;
 
         if(nombre.trim() === ""){
-            setErrorNombre("el nombre NO debe estar vacio");
+            setErrorNombre("El nombre no debe estar vacío. ❌");
             vali = false;
         }else if(/\d/.test(nombre)){
-            setErrorNombre("no puede aver numeros en el nombre");
+            setErrorNombre("El nombre no puede contener números. ❌");
+            vali = false;
+        }else if(nombre.length > 15){
+            setErrorNombre("El nombre no puede tener más de 15 caracteres. ❌");
             vali = false;
         }else{
-            setErrorNombre("correcto");
+            setErrorNombre("Correcto ✅");
         }
 
         if(apellido.trim() === ""){
-            setErrorApellido("el apellido NO debe estar vacio");
+            setErrorApellido("El apellido no debe estar vacío. ❌");
             vali = false;
         }else if(/\d/.test(apellido)){
-            setErrorApellido("no puede aver numeros en el apellido");
+            setErrorApellido("El apellido no puede contener números. ❌");
+            vali = false;
+        }else if(apellido.length > 20){
+            setErrorNombre("El apellido no puede tener más de 20 caracteres. ❌");
             vali = false;
         }else{
-            setErrorApellido("correcto");
+            setErrorApellido("Correcto ✅");
         }
 
         if(correo.trim() === ""){
-            setErrorCorreo("el correo NO puede estar vacio");
+            setErrorCorreo("El correo no puede estar vacío. ❌");
             vali = false;
         }else if(!correo.endsWith('@gmail.com')){
-            setErrorCorreo("el correo tiene que tener al ultimo @gmail.com");
+            setErrorCorreo("El correo debe terminar en @gmail.com. ❌");
             vali = false;
         }else{
-            setErrorCorreo("correcto");
+            setErrorCorreo("Correcto ✅");
         }
 
         if(telefono.trim() === ""){
-            setErrorTelefono("el telefono no puede estar vacio");
+            setErrorTelefono("El teléfono no puede estar vacío. ❌");
             vali = false;
         }else if(!/^\d{9}$/.test(telefono)){
-            setErrorTelefono("el telefono tiene que tener 9 digitos y no puede tener letras");
+            setErrorTelefono("El teléfono debe tener 9 dígitos numéricos y no puede contener letras. ❌");
             vali = false;
         }else{
-            setErrorTelefono("correcto");
+            setErrorTelefono("Correcto ✅");
         }
 
         return vali;
     };
     
-    const setContacto = () =>{
-
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -72,38 +75,38 @@ const Agregar = ({ onAgregar }) => {
                 telefono
             };
             onAgregar(contacto);
-            alert("formulario enviado");
+            alert("Formulario enviado correctamente.");
             setNombre("");
             setApellido("");
             setCorreo("");
             setTelefono("");
         } else {
-            alert("formuladiro no enviado");
+            alert("Formulario no enviado. Revise los campos.");
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <h1 className="display-4 text-center">agregar contacto</h1>
+                <h1 className="display-4 text-center">Agregar contactos</h1>
                 <div className="mb-3 text-center">
-                    <label htmlFor="Nombre" className="form-label mt-5 ml-1 titu">nombre &nbsp;</label>
+                    <label htmlFor="Nombre" className="form-label mt-5 ml-1 titu">Nombre &nbsp;</label>
                     <span className="error">{errorNombre}</span>
-                    <input type="text" className="form-control" id="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="porfavor ingrese su apellido este es obligatorio no puede estar vacio y tampoco puede tener numeros" />
+                    <input type="text" className="form-control" id="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Por favor, ingrese su nombre. Este campo es obligatorio, no puede estar vacío, no puede contener números y no debe superar los 15 caracteres." />
 
-                    <label htmlFor="Apellido" className="form-label mt-2 titu">apellido &nbsp;</label>
+                    <label htmlFor="Apellido" className="form-label mt-2 titu">Apellido &nbsp;</label>
                     <span className="error">{errorApellido}</span>
-                    <input type="text" className="form-control" id="Apellido" value={apellido} onChange={(e) => setApellido(e.target.value)} placeholder="porfavor ingrese su apellido este es obligatorio no puede estar vacio y tampoco puede tener numeros" />
+                    <input type="text" className="form-control" id="Apellido" value={apellido} onChange={(e) => setApellido(e.target.value)} placeholder="Por favor, ingrese su apellido. Este campo es obligatorio, no puede estar vacío, no puede contener números y no debe superar los 20 caracteres." />
 
-                    <label htmlFor="Correo" className="form-label mt-2 titu">correo &nbsp;</label>
+                    <label htmlFor="Correo" className="form-label mt-2 titu">Email &nbsp;</label>
                     <span className="error">{errorCorreo}</span>
-                    <input type="text" className="form-control" id="Correo" value={correo} onChange={(e) => setCorreo(e.target.value)} placeholder="porfavor ingrese su correo con @gmail.com al ultimo" />
+                    <input type="text" className="form-control" id="Correo" value={correo} onChange={(e) => setCorreo(e.target.value)} placeholder="Por favor, ingrese su correo electrónico. Debe terminar en @gmail.com." />
 
-                    <label htmlFor="Telefono" className="form-label mt-2 titu">telefono &nbsp;</label>
+                    <label htmlFor="Telefono" className="form-label mt-2 titu">Telefono &nbsp;</label>
                     <span className="error">{errorTelefono}</span>
-                    <input type="text" className="form-control" id="Telefono" value={telefono} onChange={(e) => setTelefono(e.target.value)} placeholder="porfavor ingresar telefono debe tener 9 digitos" />
+                    <input type="text" className="form-control" id="Telefono" value={telefono} onChange={(e) => setTelefono(e.target.value)} placeholder="Por favor, ingrese su número de teléfono. Debe contener exactamente 9 dígitos numéricos." />
 
-                    <button type="submit" className="btn btn-success mt-2">+</button>
+                    <button type="submit" className="btn btn-success mt-2"><i class="bi bi-bookmark-plus"></i></button>
                 </div>
             </div>
         </form>

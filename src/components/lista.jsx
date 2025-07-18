@@ -1,4 +1,4 @@
-const Listado = ({ contactos, onEliminar, onEditar }) => {
+const Lista = ({ contactos, onEliminar}) => {
     return (
         <div className="container mt-4">
             <div className="row">
@@ -12,8 +12,8 @@ const Listado = ({ contactos, onEliminar, onEditar }) => {
                                 </h5>
                                 <p className="card-text">{persona.correo} - {persona.telefono}</p>
                                 <div className="d-flex justify-content-between mt-3">
-                                    <button onClick={() => onEditar(index)} className="btn btn-warning btn-sm">*</button>
-                                    <button onClick={() => onEliminar(index)} className="btn btn-danger btn-sm">-</button>
+                                    <button className="btn btn-warning btn-sm"><i class="bi bi-pen"></i></button> {/* no logre aditar los datos usando el formulario de agregar :,c */}
+                                    <button onClick={() => onEliminar(index)} className="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button> {/* envio el index a App para poder eliminar en especifico ese usuario */}
                                 </div>
                             </div>
                         </div>
@@ -24,4 +24,4 @@ const Listado = ({ contactos, onEliminar, onEditar }) => {
     );
 };
 
-export default Listado;
+export default Lista;
