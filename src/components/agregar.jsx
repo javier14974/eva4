@@ -24,6 +24,9 @@ const Agregar = ({ onAgregar }) => {
         }else if(nombre.length > 15){
             setErrorNombre("El nombre no puede tener más de 15 caracteres. ❌");
             vali = false;
+        }else if(nombre === apellido){
+            setErrorNombre("El nombre no puede ser igual al apellido. ❌");
+            vali = false;
         }else{
             setErrorNombre("Correcto ✅");
         }
@@ -36,6 +39,9 @@ const Agregar = ({ onAgregar }) => {
             vali = false;
         }else if(apellido.length > 20){
             setErrorNombre("El apellido no puede tener más de 20 caracteres. ❌");
+            vali = false;
+        }else if(apellido === nombre){
+            setErrorApellido("El apellido no puede ser igual al nombre. ❌");
             vali = false;
         }else{
             setErrorApellido("Correcto ✅");
