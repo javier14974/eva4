@@ -1,0 +1,16 @@
+.head{
+    background-color: burlywood;
+    height: 550px;
+}
+
+.todo {
+    background-color: coral;
+}
+
+.titu{
+    color: seagreen;
+}
+
+.error{
+    color: darkslategrey;
+}

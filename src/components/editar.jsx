@@ -1,0 +1,9 @@
+const editar = () =>{
+
+}
+
+
+export {
+    editar,
+    
+} 
